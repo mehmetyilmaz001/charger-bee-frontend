@@ -1,9 +1,6 @@
 import React from 'react';
 import { Layout, Menu, theme } from 'antd';
 import { useTranslation } from 'next-i18next';
-
-
-
 import type { MenuProps } from 'antd';
 import {
     AppstoreOutlined,
@@ -15,7 +12,6 @@ import {
     UserOutlined,
     VideoCameraOutlined,
   } from '@ant-design/icons';
-import { GetStaticProps } from 'next/types';
 
 const { Header, Content, Footer, Sider } = Layout;
 
