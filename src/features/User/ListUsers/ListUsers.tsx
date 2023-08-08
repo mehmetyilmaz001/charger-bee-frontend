@@ -73,7 +73,7 @@ const data: User[] = [
 const ListUsers: React.FC<ListUsersProps> = () => {
     return (
         <div>
-            <Table columns={columns} data={data} caption={<TableHeader title="Users" />} rowKey="id" />
+            <Table columns={columns} data={data} rowKey="id" />
         </div>
     );
 };
