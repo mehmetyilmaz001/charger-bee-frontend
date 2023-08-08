@@ -7,7 +7,6 @@ import ListUsers from '@/features/User/ListUsers/ListUsers';
 const UsersPage = () => {
     return (
         <AdminLayout>
-            Users
             <ListUsers />
         </AdminLayout>
     );
