@@ -40,25 +40,15 @@ interface ILayoutProps {
 const AdminLayout: React.FC<ILayoutProps> = ({ children, showBreadcrump }) => {
   const { t } = useTranslation("common");
 
-  const {
-    token: { colorBgContainer },
-  } = theme.useToken();
+  const { token: { colorBgContainer }} = theme.useToken();
+  
   return (
-    <Layout hasSider>
-      <Sider
-        style={{
-          overflow: 'auto',
-          height: '100vh',
-          position: 'fixed',
-          left: 0,
-          top: 0,
-          bottom: 0,
-        }}
-      >
-        <div className="demo-logo-vertical" />
-        <Menu theme="light" mode="inline" defaultSelectedKeys={['4']} items={items} />
+    <Layout hasSider className="admin-layout">
+      <Sider className="sider">
+        <div className="logo">Charger Bee Admin</div>
+        <Menu className="menu" theme="light" mode="inline" defaultSelectedKeys={['4']} items={items} />
       </Sider>
-      <Layout className="site-layout" style={{ marginLeft: 200 }}>
+      <Layout className="">
         <Header style={{ padding: 0, background: colorBgContainer }} />
         <Content style={{ margin: '24px 16px 0', overflow: 'initial' }}>
           <div style={{ padding: 24, background: colorBgContainer }}>
@@ -68,7 +58,7 @@ const AdminLayout: React.FC<ILayoutProps> = ({ children, showBreadcrump }) => {
             </Space>
           </div>
         </Content>
-        <Footer style={{ textAlign: 'center' }}>{t("footer.politic.cookie")}</Footer>
+        <Footer>{t("footer.politic.cookie")}</Footer>
       </Layout>
     </Layout>
   );
