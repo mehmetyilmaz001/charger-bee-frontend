@@ -1,44 +1,15 @@
 import Table, { TableProps } from '@/components/Table/Table';
 import React from 'react';
 import { Role, User } from '../types';
-import { Tag } from 'antd';
-import { DateCell, ActionsCell, TableHeader, ProfileCell, EmailCell, PhoneCell } from '@/components/Table/components';
+import { Button, Tag } from 'antd';
+import { DateCell, ActionsCell, ProfileCell, EmailCell, PhoneCell } from '@/components/Table/components';
+import { useRouter } from 'next/router';
 
 interface ListUsersProps {
 
 }
 
-const columns: TableProps<User>["columns"] = [
-    {
-        title: "Name",
-        dataIndex: "fullName",
-        render: (_, record) => <ProfileCell name={record.fullName} profilePicUrl={record.profilePicUrl} />
-    },
-    {
-        title: "Email",
-        dataIndex: "email",
-        render: (val: string) => <EmailCell email={val} />
-    },
-    {
-        title: "Phone",
-        dataIndex: "phone",
-        render: (val: string) => <PhoneCell phone={val} />
-    },
-    {
-        title: "Created Date",
-        dataIndex: "createdDate",
-        render: (val: string) => <DateCell date={val} format="DD/MM/YYYY [at] h:mm A" />
-    },
-    {
-        title: "Role",
-        dataIndex: "role",
-        render: (val: Role[]) => val.map(role => <Tag key={role.id}>{role.name}</Tag>)
-    },
-    {
-        dataIndex: "id",
-        render: (val: string) => <ActionsCell onDetail={() => alert(val)} onDelete={() => alert(val)} />
-    }
-];
+
 
 const data: User[] = [
     {
@@ -71,8 +42,41 @@ const data: User[] = [
 ];
 
 const ListUsers: React.FC<ListUsersProps> = () => {
+    const router = useRouter();
+    const columns: TableProps<User>["columns"] = [
+        {
+            title: "Name",
+            dataIndex: "fullName",
+            render: (_, record) => <ProfileCell name={record.fullName} profilePicUrl={record.profilePicUrl} />
+        },
+        {
+            title: "Email",
+            dataIndex: "email",
+            render: (val: string) => <EmailCell email={val} />
+        },
+        {
+            title: "Phone",
+            dataIndex: "phone",
+            render: (val: string) => <PhoneCell phone={val} />
+        },
+        {
+            title: "Created Date",
+            dataIndex: "createdDate",
+            render: (val: string) => <DateCell date={val} format="DD/MM/YYYY [at] h:mm A" />
+        },
+        {
+            title: "Role",
+            dataIndex: "role",
+            render: (val: Role[]) => val.map(role => <Tag key={role.id}>{role.name}</Tag>)
+        },
+        {
+            dataIndex: "id",
+            render: (val: string) => <ActionsCell onDetail={() => router.push({ pathname: "/admin/users/save", query: { id: val } })} onDelete={() => alert(val)} />
+        }
+    ];
     return (
         <div>
+            <Button onClick={() => router.push("/admin/users/save")}>Create User</Button>
             <Table columns={columns} data={data} rowKey="id" />
         </div>
     );
