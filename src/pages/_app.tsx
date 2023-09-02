@@ -2,8 +2,11 @@ import React from 'react';
 import { ConfigProvider } from 'antd';
 import { appWithTranslation } from "next-i18next";
 import type { AppProps } from 'next/app';
-import theme from '../theme/themeConfig';
+import theme from '../styles/theme/base';
 import { usePersistentLanguage } from '@/hooks/usePersistentLocale';
+import "../styles/app.scss";
+import ThemeProvider from '@/providers/ThemeProvider';
+import GlobalStyle from '@/styles/globals';
 
 const App = ({ Component, pageProps }: AppProps) => {
 
@@ -11,7 +14,10 @@ const App = ({ Component, pageProps }: AppProps) => {
 
   return (
     <ConfigProvider theme={theme}>
-      <Component {...pageProps} />
+      <ThemeProvider>
+        <GlobalStyle />
+        <Component {...pageProps} />
+      </ThemeProvider>
     </ConfigProvider>
   )
 };
