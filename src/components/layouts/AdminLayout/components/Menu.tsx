@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import { Menu as AntMenu, Layout } from 'antd';
+import { Menu as AntMenu } from 'antd';
 import { useTranslation } from 'next-i18next';
 import type { MenuProps as AntMenuProps } from 'antd';
 import {
@@ -10,11 +10,9 @@ import {
 import { useRouter } from 'next/router';
 
 import styles from "./Menu.module.scss";
+import { SiderStyled } from './Menu.styled';
 
 interface IMenuProps {}
-
-console.log('%cMenu.tsx line:16 styles', 'color: #007acc;', styles);
-
 
 const Menu: React.FC<IMenuProps> = () => {
     const router = useRouter();
@@ -33,12 +31,12 @@ const Menu: React.FC<IMenuProps> = () => {
     ]
 
     return (
-        <Layout.Sider className={styles.sider}>
-            <div className={styles.logo}><Image width={0} height={0} src="/images/logo.svg" alt="logo" sizes='100vh'/></div>
-            <AntMenu className="menu" theme="light" mode="inline" items={menuItems} selectedKeys={[router.pathname]} onClick={(menuItem) => {
+        <SiderStyled>
+            <div className="logo"><Image width={0} height={0} src="/images/logo.svg" alt="logo" sizes='100vh'/></div>
+            <AntMenu className="menu" mode="inline" items={menuItems} selectedKeys={[router.pathname]} onClick={(menuItem) => {
                 router.push(menuItem.key)
             }} />
-        </Layout.Sider>
+        </SiderStyled>
     );
 }
 

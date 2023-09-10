@@ -1,0 +1,14 @@
+{
+    "users": "Kullanıcılar",
+    "user": "Kullanıcı",
+    "new_user": "Yeni Kullanıcı",
+    "edit_user": "Kullanıcıyı Düzenle",
+    "save_user": "Kullanıcıyı Kaydet",
+    "delete_user": "Kullanıcıyı Sil",
+    "upload_profile_pic": "Profil Fotoğrafı Yükle",
+    "full_name": "Adı Soyadı",
+    "first_name": "Ad",
+    "last_name": "Soyad",
+    "email": "E-posta",
+    "phone": "Telefon Numarası"
+    }

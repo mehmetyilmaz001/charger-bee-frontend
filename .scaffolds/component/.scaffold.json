@@ -1,0 +1,9 @@
+{
+    "variables": [
+        "name",
+        {
+            "name": "Component Name",
+            "prompt": "Enter component name"
+        }
+    ]
+}

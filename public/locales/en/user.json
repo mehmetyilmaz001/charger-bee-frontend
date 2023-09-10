@@ -1,0 +1,14 @@
+{
+    "users": "Users",
+    "user": "User",
+    "new_user": "New User",
+    "edit_user": "Edit User",
+    "save_user": "Save User",
+    "delete_user": "Delete User",
+    "upload_profile_pic": "Upload Profile Pic",
+    "full_name": "Full Name",
+    "first_name": "First Name",
+    "last_name": "Last Name",
+    "email": "E-mail",
+    "phone": "Phone Number"
+}

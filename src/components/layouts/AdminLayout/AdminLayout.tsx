@@ -1,9 +1,8 @@
 import React from 'react';
-import { Layout, Space, theme } from 'antd';
-import Breadcrump from '@/components/Breadcrump/Breadcrump';
+import { Layout, Space } from 'antd';
 import Menu from './components/Menu';
-
-import styles from './AdminLayout.module.scss';
+import { AdminLayoutStyled } from './AdminLayout.styled';
+import Breadcrumb from '@/components/Breadcrumb/Breadcrumb';
 
 const { Content } = Layout;
 
@@ -14,22 +13,20 @@ interface ILayoutProps {
 }
 
 const AdminLayout: React.FC<ILayoutProps> = ({ children, showBreadcrump }) => {
-  const { token: { colorBgContainer } } = theme.useToken();
-
   return (
-    <Layout hasSider className={styles.layout}>
+    <AdminLayoutStyled hasSider>
       <Menu />
       <Layout>
-        <Content>
-          <div className={styles.container}>
+        <Content className="container">
+          <div>
             <Space direction="vertical" style={{ width: "100%" }}>
-              {showBreadcrump && <Breadcrump />}
+              {showBreadcrump && <Breadcrumb />} 
               {children}
             </Space>
           </div>
         </Content>
       </Layout>
-    </Layout>
+    </AdminLayoutStyled>
   );
 
 };

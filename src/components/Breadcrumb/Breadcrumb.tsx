@@ -2,15 +2,15 @@ import React from 'react';
 import { Breadcrumb as AntBreadcrumb } from 'antd';
 import useItems from './useItems';
 
-interface BreadcrumpProps {
+interface BreadcrumbProps {
 
 }
 
-const Breadcrump: React.FC<BreadcrumpProps> = () => {
+const Breadcrumb: React.FC<BreadcrumbProps> = () => {
     const items = useItems();
     return (
         <AntBreadcrumb items={items} />
     );
 };
 
-export default Breadcrump;
+export default Breadcrumb;
