@@ -1,11 +1,13 @@
-import React from 'react';
 import { Layout, Space } from 'antd';
-import Menu from './components/Menu';
-import { AdminLayoutStyled } from './AdminLayout.styled';
+import React from 'react';
+
 import Breadcrumb from '@/components/Breadcrumb/Breadcrumb';
+import DesktopTablet from '@/components/Responsive/DesktopTablet';
+
+import { AdminLayoutStyled } from './AdminLayout.styled';
+import Menu from './components/Menu';
 
 const { Content } = Layout;
-
 
 interface ILayoutProps {
   children: React.ReactNode;
@@ -15,12 +17,14 @@ interface ILayoutProps {
 const AdminLayout: React.FC<ILayoutProps> = ({ children, showBreadcrump }) => {
   return (
     <AdminLayoutStyled hasSider>
-      <Menu />
+      <DesktopTablet>
+        <Menu />
+      </DesktopTablet>
       <Layout>
         <Content className="container">
           <div>
-            <Space direction="vertical" style={{ width: "100%" }}>
-              {showBreadcrump && <Breadcrumb />} 
+            <Space direction="vertical" style={{ width: '100%' }}>
+              {showBreadcrump && <Breadcrumb />}
               {children}
             </Space>
           </div>
@@ -28,7 +32,6 @@ const AdminLayout: React.FC<ILayoutProps> = ({ children, showBreadcrump }) => {
       </Layout>
     </AdminLayoutStyled>
   );
-
 };
 
 // TODO: theme support

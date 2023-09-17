@@ -1,11 +1,16 @@
-import React from 'react';
-import { StyleProvider, createCache, extractStyle } from '@ant-design/cssinjs';
-import Document, { Head, Html, Main, NextScript } from 'next/document';
+import { createCache, extractStyle, StyleProvider } from '@ant-design/cssinjs';
 import type { DocumentContext } from 'next/document';
+import Document, { Head, Html, Main, NextScript } from 'next/document';
+import React from 'react';
 
 const MyDocument = () => (
   <Html lang="tr">
-    <Head />
+    <Head>
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+      ></meta>
+    </Head>
     <body>
       <Main />
       <NextScript />

@@ -1,17 +1,19 @@
-import React from 'react';
+import { PhoneOutlined } from '@ant-design/icons';
 import { Space } from 'antd';
-import { PhoneOutlined } from '@ant-design/icons' 
+import React from 'react';
 
 interface PhoneCellProps {
-    phone: string;
+  phone: string;
 }
 
-const PhoneCell: React.FC<PhoneCellProps> = ({phone}) => {
-    return (
-        <Space>
-            <a href={`tel: ${phone}`}><PhoneOutlined /> {phone}</a>
-        </Space>
-    );
+const PhoneCell: React.FC<PhoneCellProps> = ({ phone }) => {
+  return (
+    <Space>
+      <a href={`tel: ${phone}`}>
+        <PhoneOutlined /> {phone}
+      </a>
+    </Space>
+  );
 };
 
 export default PhoneCell;

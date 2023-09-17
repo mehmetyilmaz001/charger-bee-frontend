@@ -1,5 +1,5 @@
-import Mobile from "./Mobile";
-import Tablet from "./Tablet";
-import Desktop from "./Desktop";
+import Desktop from './Desktop';
+import Mobile from './Mobile';
+import Tablet from './Tablet';
 
-export {Mobile, Tablet, Desktop};
+export { Desktop, Mobile, Tablet };

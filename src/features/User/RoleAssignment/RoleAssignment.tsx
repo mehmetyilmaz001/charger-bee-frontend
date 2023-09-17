@@ -1,18 +1,18 @@
 // RoleAssignment.tsx
-import React, { useState } from 'react';
 import { Button, Form, Modal, Tag } from 'antd';
-import UserSearch from '../components/UserSearch/UserSearch';
-import { Role, User } from '../types';
+import React, { useState } from 'react';
+
 import RoleDropdown from '../components/RoleDropdown/RoleDropdown';
+import UserSearch from '../components/UserSearch/UserSearch';
+import type { Role, User } from '../types';
 import useRoleManagement from './RoleAssignment.hooks';
-
-
 
 const RoleAssignment: React.FC = () => {
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
   const [role, setRole] = useState<string>('');
-  const { isLoading, isError, removeRoleFromUser } = useRoleManagement(selectedUser?.id);
-
+  const { isLoading, isError, removeRoleFromUser } = useRoleManagement(
+    selectedUser?.id,
+  );
 
   const handleSubmit = () => {
     if (selectedUser) {
@@ -21,18 +21,17 @@ const RoleAssignment: React.FC = () => {
     }
   };
 
-  const handleRoleRemoval = (role: Role) => {
+  const handleRoleRemoval = (_role: Role) => {
     Modal.confirm({
-      title: `Are you sure you want to remove the ${role.name} role?`,
+      title: `Are you sure you want to remove the ${_role.name} role?`,
       async onOk() {
-        await removeRoleFromUser(role.id);
-      }
+        await removeRoleFromUser(_role.id);
+      },
     });
   };
 
-//   if (isLoading) return <p>Loading...</p>;
-//   if (isError) return <p>Error loading user data!</p>;
-
+  //   if (isLoading) return <p>Loading...</p>;
+  //   if (isError) return <p>Error loading user data!</p>;
 
   return (
     <Form layout="vertical" onFinish={handleSubmit}>
@@ -43,8 +42,15 @@ const RoleAssignment: React.FC = () => {
       {/* Display roles of the selected user */}
       {selectedUser && (
         <Form.Item label="Existing Roles">
-          {selectedUser.role.map(r => (
-            <Tag key={r.id} color="blue"  closable onClose={() => handleRoleRemoval(r)}>{r.name}</Tag>
+          {selectedUser.role.map((r) => (
+            <Tag
+              key={r.id}
+              color="blue"
+              closable
+              onClose={() => handleRoleRemoval(r)}
+            >
+              {r.name}
+            </Tag>
           ))}
         </Form.Item>
       )}
@@ -60,7 +66,11 @@ const RoleAssignment: React.FC = () => {
       </Form.Item>
 
       <Form.Item>
-        <Button type="primary" htmlType="submit" disabled={!selectedUser || !role}>
+        <Button
+          type="primary"
+          htmlType="submit"
+          disabled={!selectedUser || !role}
+        >
           Assign Role
         </Button>
       </Form.Item>

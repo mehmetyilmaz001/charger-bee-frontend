@@ -1,11 +1,16 @@
-import React from 'react';
-import { IPageHeaderProps } from './PageHeader.types';
-import { PageHeaderStyled } from './PageHeader.styled';
 import Head from 'next/head';
+import React from 'react';
+
 import Breadcrumb from '@/components/Breadcrumb/Breadcrumb';
 
-const PageHeader: React.FC<IPageHeaderProps> = ({ title, showBreadcrump, actions }) => {
+import { PageHeaderStyled } from './PageHeader.styled';
+import type { IPageHeaderProps } from './PageHeader.types';
 
+const PageHeader: React.FC<IPageHeaderProps> = ({
+  title,
+  showBreadcrump,
+  actions,
+}) => {
   return (
     <>
       <Head>

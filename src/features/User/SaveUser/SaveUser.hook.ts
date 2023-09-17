@@ -1,7 +1,8 @@
 // useSaveUser.ts
-import { mutate } from 'swr';
 import axios from 'axios';
-import { User } from '../types';
+import { mutate } from 'swr';
+
+import type { User } from '../types';
 
 const useSaveUser = () => {
   const saveUser = async (user: User): Promise<User> => {
@@ -23,10 +24,10 @@ const useSaveUser = () => {
     } else {
       response = await axios.post(url, user);
     }
-    
+
     // Here we're assuming the API responds with the created/updated user data
     const updatedUser = response.data;
-    
+
     // Revalidate and update the cache with the latest data
     mutate(url, updatedUser);
 

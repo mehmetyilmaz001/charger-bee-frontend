@@ -1,16 +1,12 @@
 /**
  * @type {import('next-i18next').UserConfig}
  */
-export const locale = {
-  en: {code: "en", name: "English"},
-  tr: {code: "tr", name: "Türkçe"}
-}
-export default {
+module.exports = {
   // https://www.i18next.com/overview/configuration-options#logging
   debug: process.env.NODE_ENV === 'development',
   i18n: {
-    defaultLocale: locale.en.code,
-    locales: Object.keys(locale),
+    defaultLocale: "en",
+    locales: ["en", "tr"],
   },
   /** To avoid issues when deploying to some paas (vercel...) */
   localePath:

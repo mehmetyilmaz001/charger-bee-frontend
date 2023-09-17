@@ -1,5 +1,5 @@
 export interface IDevice {
-    isMobile: boolean;
-    isTablet: boolean;
-    isDesktop: boolean;
+  isMobile: boolean;
+  isTablet: boolean;
+  isDesktop: boolean;
 }

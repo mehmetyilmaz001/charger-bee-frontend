@@ -5,14 +5,12 @@ export const PageHeaderStyled = styled.div`
   justify-content: space-between;
   margin-bottom: ${(props) => props.theme.antd.marginMD}px;
 
-  .title-breadcrump{
+  .title-breadcrump {
     display: flex;
     flex-direction: column;
     gap: ${(props) => props.theme.antd.marginXS}px;
-    h1{
+    h1 {
       font-size: ${(props) => props.theme.antd.fontSizeHeading1}px;
     }
   }
-
- 
 `;

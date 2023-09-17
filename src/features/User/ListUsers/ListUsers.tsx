@@ -29,7 +29,7 @@ const ListUsers: React.FC<ListUsersProps> = () => {
             </Button>,
           ]}
         />
-        <Table columns={columns} data={data} rowKey="id" />
+        <Table columns={columns} data={data} rowKey="id" responsive />
       </main>
     </>
   );

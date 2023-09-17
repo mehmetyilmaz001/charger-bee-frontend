@@ -1,13 +1,14 @@
-import { NextSeo } from "next-seo";
+import { NextSeo } from 'next-seo';
+import type { OpenGraphMedia } from 'next-seo/lib/types';
+import { useMemo } from 'react';
+
 import {
   DESCRIPTION,
-  OG_EDGE_URL_DYNAMIC,
   OG_EDGE_URL_BASE,
-  TITLE,
+  OG_EDGE_URL_DYNAMIC,
   SEO_LANG,
-} from "./HeadWithMeta.constants";
-import { OpenGraphMedia } from "next-seo/lib/types";
-import { useMemo } from "react";
+  TITLE,
+} from './HeadWithMeta.constants';
 
 interface IHeadWithMeta {
   singleItemDetail: any | null;
@@ -32,16 +33,16 @@ export const HeadWithMeta = (props: IHeadWithMeta) => {
     : DESCRIPTION;
   const LOC = isPropsValid
     ? (`${props.singleItemDetail?.lat},${props.singleItemDetail?.lng}` as string)
-    : "";
+    : '';
 
   const url = useMemo(() => {
     if (isPropsValid) return new URL(OG_EDGE_URL_BASE).href;
 
     const dynamicURL = new URL(OG_EDGE_URL_DYNAMIC);
     const query = new URLSearchParams();
-    query.append("loc", LOC);
-    query.append("address", ADDRESS);
-    query.append("entry", ENTRY);
+    query.append('loc', LOC);
+    query.append('address', ADDRESS);
+    query.append('entry', ENTRY);
     dynamicURL.search = query.toString();
 
     return dynamicURL.href;
@@ -53,7 +54,7 @@ export const HeadWithMeta = (props: IHeadWithMeta) => {
       width: 1200,
       height: 630,
       alt: `${ADDRESS}`,
-      type: "image/png",
+      type: 'image/png',
     },
   ];
 
@@ -62,33 +63,33 @@ export const HeadWithMeta = (props: IHeadWithMeta) => {
       title={ADDRESS}
       description={ENTRY}
       openGraph={{
-        type: "website",
-        url: "https://afetharita.com/",
+        type: 'website',
+        url: 'https://afetharita.com/',
         title: ADDRESS,
         description: ENTRY,
-        siteName: "Afet Haritası",
+        siteName: 'Afet Haritası',
         images: IMAGES,
       }}
       twitter={{
-        handle: "afetharita.com",
-        cardType: "summary_large_image",
-        site: "afetharita.com",
+        handle: 'afetharita.com',
+        cardType: 'summary_large_image',
+        site: 'afetharita.com',
       }}
       additionalMetaTags={[
         {
-          name: "viewport",
+          name: 'viewport',
           content:
-            "width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi",
+            'width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi',
         },
       ]}
       additionalLinkTags={[
         {
-          rel: "icon",
-          href: "/favicon.ico",
+          rel: 'icon',
+          href: '/favicon.ico',
         },
         {
-          rel: "shortcut icon",
-          href: "/favicon.ico",
+          rel: 'shortcut icon',
+          href: '/favicon.ico',
         },
       ]}
       languageAlternates={[

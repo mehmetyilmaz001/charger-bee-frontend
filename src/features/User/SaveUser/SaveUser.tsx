@@ -1,29 +1,34 @@
 // SaveUser.tsx
+import { UploadOutlined, UserOutlined } from '@ant-design/icons';
+import { Avatar, Button, Form, Input, notification, Upload } from 'antd';
 import React, { useState } from 'react';
-import { Form, Input, Button, Upload, Avatar, notification } from 'antd';
-import { UserOutlined, UploadOutlined } from '@ant-design/icons';
+
+import type { User } from '../types';
 import useSaveUser from './SaveUser.hook';
-import { User } from '../types';
 
 interface SaveUserProps {
   user?: User;
 }
 
 const SaveUser: React.FC<SaveUserProps> = ({ user = {} as User }) => {
-  const [profilePicUrl, setProfilePicUrl] = useState<string | undefined>(user.profilePicUrl);
+  const [profilePicUrl, setProfilePicUrl] = useState<string | undefined>(
+    user.profilePicUrl,
+  );
   const { saveUser } = useSaveUser();
 
   const onFinish = async (values: any) => {
     const updatedUser: User = {
       ...user,
       ...values,
-      profilePicUrl
+      profilePicUrl,
     };
 
     try {
       await saveUser(updatedUser);
-      notification.success({ 
-        message: user.id ? 'User updated successfully!' : 'User created successfully!' 
+      notification.success({
+        message: user.id
+          ? 'User updated successfully!'
+          : 'User created successfully!',
       });
     } catch (error) {
       notification.error({ message: 'Error processing request.' });
@@ -51,19 +56,41 @@ const SaveUser: React.FC<SaveUserProps> = ({ user = {} as User }) => {
         </Upload>
       </Form.Item>
 
-      <Form.Item label="Name" name="name" rules={[{ required: true, message: 'Please input the name!' }]}>
+      <Form.Item
+        label="Name"
+        name="name"
+        rules={[{ required: true, message: 'Please input the name!' }]}
+      >
         <Input />
       </Form.Item>
 
-      <Form.Item label="Surname" name="surname" rules={[{ required: true, message: 'Please input the surname!' }]}>
+      <Form.Item
+        label="Surname"
+        name="surname"
+        rules={[{ required: true, message: 'Please input the surname!' }]}
+      >
         <Input />
       </Form.Item>
 
-      <Form.Item label="Email" name="email" rules={[{ required: true, type: 'email', message: 'Please input a valid email!' }]}>
+      <Form.Item
+        label="Email"
+        name="email"
+        rules={[
+          {
+            required: true,
+            type: 'email',
+            message: 'Please input a valid email!',
+          },
+        ]}
+      >
         <Input />
       </Form.Item>
 
-      <Form.Item label="Phone" name="phone" rules={[{ required: true, message: 'Please input the phone number!' }]}>
+      <Form.Item
+        label="Phone"
+        name="phone"
+        rules={[{ required: true, message: 'Please input the phone number!' }]}
+      >
         <Input />
       </Form.Item>
       <Form.Item>
