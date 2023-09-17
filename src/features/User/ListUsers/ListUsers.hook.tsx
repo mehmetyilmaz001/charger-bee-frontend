@@ -35,31 +35,31 @@ const data: User[] = [
 ];
 
 export const useListUsers = () => {
-    const { t } = useTranslation();
+    const { t } = useTranslation(["user", "common"]);
     const router = useRouter();
     const columns: TableProps<User>["columns"] = [
         {
-            title: t("common.users"),
+            title: t("full_name"),
             dataIndex: "fullName",
             render: (_, record) => <ProfileCell name={record.fullName} profilePicUrl={record.profilePicUrl} />
         },
         {
-            title: "Email",
+            title: t("email"),
             dataIndex: "email",
             render: (val: string) => <EmailCell email={val} />
         },
         {
-            title: "Phone",
+            title: t("phone"),
             dataIndex: "phone",
             render: (val: string) => <PhoneCell phone={val} />
         },
         {
-            title: "Created Date",
+            title: t("common:created_date"),
             dataIndex: "createdDate",
             render: (val: string) => <DateCell date={val} format="DD/MM/YYYY [at] h:mm A" />
         },
         {
-            title: "Role",
+            title: t("role"),
             dataIndex: "role",
             render: (val: Role[]) => val.map(role => <Tag key={role.id}>{role.name}</Tag>)
         },

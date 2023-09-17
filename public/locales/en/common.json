@@ -16,5 +16,10 @@
         "privacy": "Privacy",
         "data": "Data Sources"
       }
-    }
+    },
+
+    "created_date": "Create Date",
+    "detail": "Detail",
+    "delete": "Delete",
+    "edit": "Edit"
   }

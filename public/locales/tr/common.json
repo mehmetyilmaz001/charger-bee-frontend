@@ -16,5 +16,10 @@
       "privacy": "Gizlilik",
       "data": "Veri Kaynakları"
     }
-  }
+  },
+
+  "created_date": "Oluşturma Tarihi",
+  "detail": "Detay",
+  "delete": "Sil",
+  "edit": "Düzenle"
 }
